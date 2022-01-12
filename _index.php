@@ -55,7 +55,7 @@ echo '<th>Nickname:</th><td><input type="text" name="nick" value="'.$akt_nick.'"
         
         }
 
-
+#echo $nick;
 //alle Teilnehmer von heute ausgeben
 echo "<form action = '' metod='post'>";
 
@@ -70,8 +70,8 @@ echo '<div id="teilnehmer_fenster" >';
 
 
             if (isset($_POST[$user])) {
-
-                header('Location: ./newchat.php');
+               $nick = $_POST['nick'];
+                header("Location: ./newchat.php?user=$user&nick=$nick");
             
             }
 
