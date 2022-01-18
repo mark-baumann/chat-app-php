@@ -1,7 +1,7 @@
 <?php
 
 $user = "root";
-$password = "usbw";
+$password = "";
 $host = "localhost";
 $dbname = "php_chat";
 
