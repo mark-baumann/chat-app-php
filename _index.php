@@ -55,6 +55,40 @@ echo '<th>Nickname:</th><td><input type="text" name="nick" value="'.$akt_nick.'"
         
         }
 
+#echo $nick;
+//alle Teilnehmer von heute ausgeben
+echo "<form action = '' metod='post'>";
+
+echo '<div id="teilnehmer_fenster" >';
+        echo '<h2>Heute im Chat:</h2>';
+        //Nur die Teilnehmer von heute auslesen
+          $abfrage = mysqli_query($db,"SELECT DISTINCT nick FROM tb_chat WHERE datum LIKE '$heute'"); 
+          while($row = mysqli_fetch_array($abfrage,MYSQLI_ASSOC)) 
+          { 
+            $user = $row['nick'];
+            echo "<button type='submit' name='$user' value='$user'>$user</button>"; 
+
+
+            if (isset($_POST[$user])) {
+               $nick = $_POST['nick'];
+                header("Location: ./newchat.php?user=$user&nick=$nick");
+            
+            }
+
+            
+
+            
+
+
+
+          }
+echo '</div>';
+echo "</form>";
+
+
+
+
+
         echo '<div id="chat_fenster" >';
         
         //Nur die Einträge von heute auslesen
@@ -65,7 +99,6 @@ echo '<th>Nickname:</th><td><input type="text" name="nick" value="'.$akt_nick.'"
             <div id = "uhrzeit"><span style ="color:green">'.$row['uhrzeit'].'</span></div><br>'; 
           }
 echo '</div>';
-
 
 
 
